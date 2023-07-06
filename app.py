@@ -2,7 +2,6 @@ from gtts import gTTS
 
 import os 
 
-# The text that you want to convert to audio 
 fh = open("test.txt", "r")
 myText = fh.read().replace("\n", " ")
 
