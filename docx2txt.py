@@ -14,7 +14,7 @@ def form():
         <body>
         <h1>Text to Speech</h1>
         <form method="POST" action="convert" enctype="multipart/form-data">
-            <input type="file" name="doc_file" accept=".docx">
+            <input type="file" name="doc_file" accept=".docx,.doc,.pdf,.txt">
             <input type="submit">
         </form>
         </body>
@@ -42,3 +42,6 @@ def convert_text_to_speech():
 
     # Return the audio file to the user
     return send_file("output.mp3", as_attachment=True)
+
+if __name__ == '__main__':
+    app.run(port=5000)
