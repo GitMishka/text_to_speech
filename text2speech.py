@@ -7,7 +7,6 @@ from docx import Document
 
 app = Flask(__name__)
 
-# List of available voices
 voices = [
     texttospeech.VoiceSelectionParams(
         language_code='en-US',
@@ -17,7 +16,6 @@ voices = [
         language_code='en-US',
         name='en-US-Wavenet-D',
         ssml_gender=texttospeech.SsmlVoiceGender.MALE),
-    # Add more voices here...
 ]
 
 @app.route('/')
@@ -65,11 +63,9 @@ def convert_text_to_speech():
     response = client.synthesize_speech(
         input=synthesis_input, voice=voice, audio_config=audio_config)
 
-    # Save the audio to a file
     with open('output.mp3', 'wb') as out:
         out.write(response.audio_content)
 
-    # Return the audio file to the user
     return send_file("output.mp3", as_attachment=True)
 
 if __name__ == '__main__':
